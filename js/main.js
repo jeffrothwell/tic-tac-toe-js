@@ -9,13 +9,17 @@ document.addEventListener('DOMContentLoaded', function(){
     var innerSpan = e.target.querySelector('span');
     var statusP = document.querySelector('.statusP');
 
+    // Only take action if innerSpan has no content and game is still going
     if (innerSpan.innerText === "" && gameOn) {
+
       // set letterToPlace to x or y depending on the turn
       var letterToPlace = statusSpan.className;
+
       // change class and content of innerSpan and its containing div
       innerSpan.classList.add(letterToPlace);
       innerSpan.innerText = letterToPlace.toUpperCase();
       e.target.classList.add(letterToPlace);
+
       // toggle classes and innerText on the statusSpan to set up next turn;
       statusSpan.classList.toggle('x');
       statusSpan.classList.toggle('o');
@@ -25,10 +29,16 @@ document.addEventListener('DOMContentLoaded', function(){
 
       if (moves > 4 && moves < 9) {
         checkForWinner();
-      } else if (moves >= 9) {
-        statusP.style.fontSize = "36px";
-        statusP.innerText = "TIE GAME";
-        document.querySelector('.playAgain').style.display = 'inline-block';
+      } else if (moves === 9) {
+        checkForWinner();
+        if (gameOn === true) {
+          // checkForWinner changes gameOn to false if a winner is found
+          // we only enter this block if the board is full and there's no winner
+          statusP.style.fontSize = "36px";
+          statusP.innerText = "TIE GAME";
+          document.querySelector('.playAgain').style.display = 'inline-block';
+          gameOn = false;
+        }
       }
     }
   });
