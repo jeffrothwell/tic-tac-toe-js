@@ -1,0 +1,62 @@
+body {
+  box-sizing: border-box;
+  font-family: Helvetica, sans-serif;
+}
+.status, .playAgain {
+  width: 325px;
+  display: inline-block;
+  float: left;
+}
+
+.playAgain {
+  display: none;
+}
+
+.board {
+  clear: both;
+  border: 3px solid black;
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  top: 80px;
+  left: 50px;
+}
+
+
+.box {
+  width: 32.9%;
+  height: 32.9%;
+  border: 1px solid black;
+  display: inline-block;
+  float: left;
+}
+
+.boxSpan {
+  text-align: center;
+  font-size: 87px;
+  font-weight: bold;
+  position: relative;
+  top: 30%;
+  left: 32%;
+}
+
+span.x {
+  color: red;
+}
+
+span.o {
+  color: blue;
+}
+
+p {
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+.box.x-winner {
+  background-color: rgba(255, 0, 0, 0.4);
+}
+
+.box.o-winner {
+  background-color: rgba(0, 0, 255, 0.4);
+}
